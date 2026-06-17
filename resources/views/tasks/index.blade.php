@@ -45,11 +45,11 @@
             </thead>
             <tbody class="divide-y divide-gray-200">
                 @forelse ($tasks as $task)
-                    <tr class="hover:bg-gray-50 transition-colors duration-150">
+                    <tr class="hover:bg-gray-50 transition-colors duration-150 cursor-pointer" onclick="window.location='{{ route('tasks.show', $task) }}'">
                         <td class="p-4 whitespace-nowrap">
-                            <a href="{{ route('tasks.show', $task) }}" class="font-medium text-indigo-600 hover:text-indigo-800 hover:underline">
+                            <span class="font-medium text-indigo-600 group-hover:text-indigo-800">
                                 {{ $task->title }}
-                            </a>
+                            </span>
                         </td>
                         <td class="p-4 whitespace-nowrap">
                             @if ($task->status == 'pendente')
@@ -63,10 +63,12 @@
                         <td class="p-4 whitespace-nowrap text-gray-600">{{ $task->created_at->format('d/m/Y') }}</td>
                         <td class="p-4 whitespace-nowrap text-center">
                             <a href="{{ route('tasks.edit', $task) }}"
-                                class="font-medium text-indigo-600 hover:text-indigo-800">Editar</a>
+                                class="font-medium text-indigo-600 hover:text-indigo-800"
+                                onclick="event.stopPropagation()">Editar</a>
 
                             <form action="{{ route('tasks.destroy', $task) }}" method="POST" class="inline ml-4"
-                                onsubmit="return confirm('Tem certeza que deseja excluir esta tarefa?');">
+                                onsubmit="return confirm('Tem certeza que deseja excluir esta tarefa?');"
+                                onclick="event.stopPropagation()">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="font-medium text-red-600 hover:text-red-800">Excluir</button>
@@ -84,14 +86,12 @@
 
         <div class="lg:hidden divide-y divide-gray-200">
             @forelse ($tasks as $task)
-                <div class="p-4 space-y-3 hover:bg-gray-50 transition-colors duration-150">
+                <div class="p-4 space-y-3 hover:bg-gray-50 transition-colors duration-150 cursor-pointer" onclick="window.location='{{ route('tasks.show', $task) }}'">
                     <div class="pb-2">
                         <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Título</p>
-                        <a href="{{ route('tasks.show', $task) }}">
-                            <h3 class="text-lg font-bold text-indigo-600 hover:text-indigo-800 hover:underline transition-colors">
-                                {{ $task->title }}
-                            </h3>
-                        </a>
+                        <h3 class="text-lg font-bold text-indigo-600 hover:text-indigo-800 transition-colors">
+                            {{ $task->title }}
+                        </h3>
                     </div>
                     <div class="flex justify-between items-center text-sm">
                         <div class="flex items-center space-x-2">
@@ -110,9 +110,12 @@
                     </div>
                     <div class="flex justify-end space-x-4 pt-3 border-t border-gray-100">
                         <a href="{{ route('tasks.edit', $task) }}"
-                            class="font-medium text-indigo-600 hover:text-indigo-800 text-sm">Editar</a>
+                            class="font-medium text-indigo-600 hover:text-indigo-800 text-sm"
+                            onclick="event.stopPropagation()">Editar</a>
+                        
                         <form action="{{ route('tasks.destroy', $task) }}" method="POST" class="inline"
-                            onsubmit="return confirm('Tem certeza que deseja excluir esta tarefa?');">
+                            onsubmit="return confirm('Tem certeza que deseja excluir esta tarefa?');"
+                            onclick="event.stopPropagation()">
                             @csrf
                             @method('DELETE')
                             <button type="submit"
