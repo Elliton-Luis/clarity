@@ -12,7 +12,7 @@
 
     <div class="p-6 text-center">
         <a href="{{route('tasks.index')}}" class="text-2xl font-bold text-stone-800 hover:text-indigo-600 transition-colors">
-            To-Do App
+            Clarity
         </a>
     </div>
 

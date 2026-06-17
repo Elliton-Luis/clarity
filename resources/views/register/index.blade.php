@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro - To-Do App</title>
+    <title>Cadastro - Clarity</title>
     @vite('resources/css/app.css')
     @livewireStyles
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -18,7 +18,7 @@
 
             <div class="text-center mb-8">
                 <a href="/" class="text-3xl font-bold text-indigo-600 hover:text-indigo-700 transition-colors">
-                    To-Do App
+                    Clarity
                 </a>
                 <p class="mt-2 text-lg text-gray-600">Crie sua conta</p>
             </div>
